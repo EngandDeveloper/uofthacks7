@@ -24,4 +24,6 @@ Quagga.init({
 Quagga.onDetected(function (data) {
     console.log(data.codeResult.code);
     document.querySelector('#result').innerText = data.codeResult.code;
+    var barcode = data.codeResult.code;
+    var barList = [05565368600, 060410025604, 073141550017];
 });
