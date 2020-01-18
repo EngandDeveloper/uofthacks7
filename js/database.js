@@ -23,6 +23,8 @@ var data = {
 
 ref.add(data);
 
+
+//retrive data ??? not working
 const results = document.querySelector('#databaseResults');
 
 function renderScore(doc){
@@ -41,6 +43,12 @@ function renderScore(doc){
     results.appendChild(li);
     //console.log("Name is", name.textContent, "Score is", score.textContent);
 }
+
+var docRef = database.collection("score").doc();
+docRef.get().then(function(doc){
+    console.log("Doc data:", doc.get("name"));
+    renderScore(doc);
+});
 
 database.collection("score").get().then((onSnapshot) => {
     onSnapshot.docs.forEach(doc => {
