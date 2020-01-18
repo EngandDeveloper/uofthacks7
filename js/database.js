@@ -22,3 +22,29 @@ var data = {
 }
 
 ref.add(data);
+
+const results = document.querySelector('#databaseResults');
+
+function renderScore(doc){
+    let li = document.createElement('li');
+    let name = document.createElement('span');
+    let score = document.createElement('span');
+    
+    li.setAttribute('data-id', doc.id);
+    console.log("Log this:",doc.score);
+    name.textContext = doc.data().name;
+    score.textContext = doc.data().score;
+
+    li.appendChild(name);
+    li.appendChild(score);
+
+    results.appendChild(li);
+    //console.log("Name is", name.textContent, "Score is", score.textContent);
+}
+
+database.collection("score").get().then((onSnapshot) => {
+    onSnapshot.docs.forEach(doc => {
+        renderScore(doc);
+        //console.log(doc);
+    })
+})
