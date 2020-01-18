@@ -44,15 +44,15 @@ function renderScore(doc){
     //console.log("Name is", name.textContent, "Score is", score.textContent);
 }
 
-var docRef = database.collection("score").doc();
-docRef.get().then(function(doc){
-    console.log("Doc data:", doc.get("name"));
-    renderScore(doc);
-});
+// var docRef = database.collection("score").doc();
+// docRef.get().then(function(doc){
+//     console.log("Doc data:", doc.get("name"));
+//     renderScore(doc);
+// });
 
 database.collection("score").get().then((onSnapshot) => {
     onSnapshot.docs.forEach(doc => {
         renderScore(doc);
         //console.log(doc);
     })
-})
+});
